@@ -51,7 +51,7 @@ local M = {}
 M.server_config = {
 	dotnet_cmd = "dotnet",
 	roslyn_version = "4.9.0-3.23604.10",
-	capabilities = nil,
+	capabilities = vim.lsp.protocol.make_client_capabilities(),
 	on_attach = nil,
 	settings = nil,
 }

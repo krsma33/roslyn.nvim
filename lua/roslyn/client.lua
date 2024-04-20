@@ -78,22 +78,6 @@ function M.spawn(cmd, target, settings, on_exit, on_attach, capabilities)
 
 	local target_uri = vim.uri_from_fname(target)
 
-	-- capabilities = vim.tbl_deep_extend("force", capabilities, {
-	-- 	workspace = {
-	-- 		didChangeWatchedFiles = {
-	-- 			dynamicRegistration = false,
-	-- 		},
-	-- 	},
-	-- })
-
-    capabilities = vim.tbl_deep_extend("force", capabilities, {
-        textDocument = {
-            hover = {
-                contentFormat = { "markdown" },
-            },
-        }
-    })
-
 	local spawned = RoslynClient.new(target)
 
 	---@diagnostic disable-next-line: missing-fields
@@ -142,10 +126,10 @@ function M.spawn(cmd, target, settings, on_exit, on_attach, capabilities)
 				vim.notify("Roslyn project initialization complete", vim.log.levels.INFO)
 				spawned:initialize()
 			end,
-            ["workspace/_roslyn_projectHasUnresolvedDependencies"] = function()
-                vim.notify("Detected missing dependencies. Run dotnet restore command.", vim.log.levels.ERROR)
-                return vim.NIL
-            end,
+			["workspace/_roslyn_projectHasUnresolvedDependencies"] = function()
+				vim.notify("Detected missing dependencies. Run dotnet restore command.", vim.log.levels.ERROR)
+				return vim.NIL
+			end,
 		},
 		on_exit = on_exit,
 	})
