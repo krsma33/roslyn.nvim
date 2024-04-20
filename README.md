@@ -13,7 +13,8 @@ Ideally I would like to depend on the Dotnet SDK and everything else to be optio
 
 ## Setup
 
-Just install `jmederosalvarado/roslyn.nvim` using your plugin manager.
+To install this fork, just install `krsma33/roslyn.nvim` using your plugin manager. 
+To install from original creator, just install `jmederosalvarado/roslyn.nvim` using your plugin manager. 
 
 ```lua
 require("roslyn").setup({
